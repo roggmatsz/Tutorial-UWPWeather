@@ -27,8 +27,9 @@ namespace Tutorial_UWPWeather
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
-
+        private async void Button_Click(object sender, RoutedEventArgs e) {
+            RootObject weather = await OpenWeatherMapProxy.GetWeather(10.3, 22.3);
+            ResultTextBlock.Text = weather.name + " - " + weather.main.temp + " - " + weather.weather[0].description;
         }
     }
 }
