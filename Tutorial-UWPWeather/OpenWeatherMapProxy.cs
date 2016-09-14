@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 namespace Tutorial_UWPWeather {
     class OpenWeatherMapProxy {
         public async static Task<RootObject> GetWeather(double latitude, double longitude) {
-            const string OPENWEATHERMAP_URL = 
-                "http://api.openweathermap.org/data/2.5/weather?lat=35.22286&lon=-80.83796&appid=21b1c373cd5a469a6c2082a9aa333782&units=imperial";
+            string OPENWEATHERMAP_URL = String.Format(
+                "http://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&appid=21b1c373cd5a469a6c2082a9aa333782&units=imperial",
+                latitude,
+                longitude);
 
             var http = new HttpClient();
             var response = await http.GetAsync(OPENWEATHERMAP_URL);
