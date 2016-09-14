@@ -28,7 +28,17 @@ namespace Tutorial_UWPWeather
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e) {
+            //get the weather from OpenWeatherMap API. For now we are just testing with a hard-coded string
+            //so the coordinates passed are not used and therefore meaningless.
             RootObject weather = await OpenWeatherMapProxy.GetWeather(10.3, 22.3);
+            
+            //get the actual icon image referenced in the prior API call
+            string icon = String.Format("http://openweathermap.org/img/w/{0}.png", weather.weather[0].icon);
+
+            //Assign the icon fetched to the source of the XAML image element in MainPage
+            ResultImage.Source = new Windows.UI.Xaml.Media.Imaging.BitmapImage(new Uri(icon, UriKind.Absolute));
+
+            //Display today's forecast in the XAML text element.
             ResultTextBlock.Text = weather.name + " - " + weather.main.temp + " - " + weather.weather[0].description;
         }
     }
