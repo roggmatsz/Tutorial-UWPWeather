@@ -28,9 +28,12 @@ namespace Tutorial_UWPWeather
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e) {
+            var position = await LocationManager.GetPosition();
+
             //get the weather from OpenWeatherMap API. For now we are just testing with a hard-coded string
             //so the coordinates passed are not used and therefore meaningless.
-            RootObject weather = await OpenWeatherMapProxy.GetWeather(10.3, 22.3);
+            RootObject weather = await OpenWeatherMapProxy.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
+
             
             //get the actual icon image referenced in the prior API call
             string icon = String.Format("http://openweathermap.org/img/w/{0}.png", weather.weather[0].icon);
