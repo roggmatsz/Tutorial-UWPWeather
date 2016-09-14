@@ -10,5 +10,6 @@
     <StackPanel Background="HotPink">
         <Button Content="Get Weather" Click="Button_Click" />
         <TextBlock Name="ResultTextBlock" />
+        <Image Name="ResultImage" />
     </StackPanel>
 </Page>
