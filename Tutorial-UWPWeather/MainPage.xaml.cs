@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -34,6 +35,16 @@ namespace Tutorial_UWPWeather
             //so the coordinates passed are not used and therefore meaningless.
             RootObject weather = await OpenWeatherMapProxy.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
 
+            //schedule updates from LiveTileService
+            string URI = String.Format(
+                "http://livetileservice1462.azurewebsites.net/default/?lat={0}&lon={1}",
+                position.Coordinate.Latitude,
+                position.Coordinate.Longitude
+                );
+
+            var tileContent = new Uri(URI);
+            var updater = TileUpdateManager.CreateTileUpdaterForApplication();
+            updater.StartPeriodicUpdate(tileContent, PeriodicUpdateRecurrence.HalfHour);
             
             //get the actual icon image referenced in the prior API call
             string icon = String.Format("http://openweathermap.org/img/w/{0}.png", weather.weather[0].icon);
