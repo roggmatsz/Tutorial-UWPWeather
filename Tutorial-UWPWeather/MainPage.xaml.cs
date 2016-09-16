@@ -32,8 +32,7 @@ namespace Tutorial_UWPWeather
              Windows.Devices.Geolocation.Geoposition position;
             try {
                 position = await LocationManager.GetPosition();
-                //get the weather from OpenWeatherMap API. For now we are just testing with a hard-coded string
-                //so the coordinates passed are not used and therefore meaningless.
+                //get the weather from OpenWeatherMap API. 
                 RootObject weather = await OpenWeatherMapProxy.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
 
                 //schedule updates from LiveTileService
