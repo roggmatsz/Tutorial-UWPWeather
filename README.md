@@ -17,6 +17,19 @@ markup every half hour from http://livetileservice1462.azurewebsites.net, a cust
 (source code [here](https://github.com/roggmatsz/LiveTileService)). For whatever reason, however, the Live Tile is not updating
 as of 09/16/2016. 
 
+## Installation
+If you wanna check it out (you're really not missing out on much, but who am I to stop you) you can:
+
+1. Clone this repository.
+2. Open `Tutorial-UWPWeather.sln` on Visual Studio 2015+.
+3. Assuming you have installed the Windows 10 SDKs, press `CTRL + F5` to compile and run the app.
+
+Alternatively, if you "ain't got time fo' dat," you can also:
+
+1. Download the zip of the packaged, sideloadable version [here](https://1drv.ms/u/s!ArkU09AdDjt8wVSPdPeVGH9wxo42).
+2. Extract the zip's contents and double-click on `Add-AppDevPackage` PowerShell script.
+3. Follow the directions and voila! 
+
 ## Next Steps
 I will leave the app as it is for now. As I learn more about UWP, I plan to come back to it and extend it accordingly until it
 becomes a nice, publishable app. On the bucket list:
